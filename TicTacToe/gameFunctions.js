@@ -10,14 +10,14 @@ window.addEventListener('load', function () {
 
     let wayToWin = {};
     const winningCombinations = [
-        ["one", "two", "three"], // Fila superior
-        ["four", "five", "six"], // Fila del medio
-        ["seven", "eight", "nine"], // Fila inferior
-        ["one", "four", "seven"], // Columna izquierda
-        ["two", "five", "eight"], // Columna central
-        ["three", "six", "nine"], // Columna derecha
-        ["one", "five", "nine"], // Diagonal principal
-        ["three", "five", "seven"] // Diagonal secundaria
+        ["one", "two", "three"], 
+        ["four", "five", "six"], 
+        ["seven", "eight", "nine"], 
+        ["one", "four", "seven"], 
+        ["two", "five", "eight"], 
+        ["three", "six", "nine"], 
+        ["one", "five", "nine"], 
+        ["three", "five", "seven"] 
     ];
     let winnerFound = false;
     
