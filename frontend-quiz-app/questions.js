@@ -87,6 +87,10 @@ function updateUi() {
     const topicTitle = document.querySelector('.questionTitleText');
     const questionText = document.querySelector('.questionText');
     const optionsText = document.querySelectorAll('.questionText2');
+    const container = document.querySelector('.scoreTopicContainer');
+    const container2 = container.querySelector('.topContainer');
+    const scoreImg = container2.querySelector('img');
+    const scoreTitle = container2.querySelector('strong');
 
     if (currentTopic) {
         let currentQuiz = jsonData.quizzes.find(function(quiz) {
@@ -96,7 +100,9 @@ function updateUi() {
         //Update Icon, Title and Question
         if (currentQuiz) {
             topicImg.src = currentQuiz.icon;
+            scoreImg.src = currentQuiz.icon;
             topicTitle.textContent = currentQuiz.title;
+            scoreTitle.textContent = currentQuiz.title;
             questionText.textContent = currentQuiz.questions[`${currentQuestionIndex}`].question;
 
             //Update Options
