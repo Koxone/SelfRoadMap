@@ -216,6 +216,7 @@ function submitAnswer() {
     const submitButton = document.getElementById('submitButton');
 
     submitButton.addEventListener('click', () => {
+        let progressBar = document.querySelector('.progressBar');
         let currentQuiz = jsonData.quizzes.find(function(quiz) {
             return quiz.title.toLowerCase() === currentTopic.toLocaleLowerCase();
         });
@@ -263,6 +264,7 @@ function submitAnswer() {
             console.log('Wrong Answer ❌')
             console.log('Current Score:', score);
         }
+        progressBar.value += 1;
         currentQuestionIndex++;
         nextQuestionButton()
     })
