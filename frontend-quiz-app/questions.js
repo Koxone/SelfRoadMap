@@ -217,11 +217,29 @@ function showScoreScreen() {
     scoreScreen.style.display = 'flex';
 }
 
+//Function to avoid choose option again
+function doubleChoice() {
+    const submitButton = document.getElementById('submitButton');
+    submitButton.addEventListener('click', () => {
+        let inputs = document.querySelectorAll('.inputRadio');
+        inputs.forEach(function(x) {
+            x.style.pointerEvents = 'none';
+    
+            const label = document.querySelector(`label[for='${x.id}']`);
+            if (label) {
+                label.style.pointerEvents = 'none'
+            }
+        })
+    })
+}
+doubleChoice()
+
 //Function for Submit Button, verify correct answer 
 function submitAnswer() {
     const submitButton = document.getElementById('submitButton');
 
     submitButton.addEventListener('click', () => {
+        let inputs = document.querySelectorAll('.inputRadio');
         let progressBar = document.querySelector('.progressBar');
         let currentQuiz = jsonData.quizzes.find(function(quiz) {
             return quiz.title.toLowerCase() === currentTopic.toLocaleLowerCase();
@@ -230,8 +248,6 @@ function submitAnswer() {
         let correctAnswer = currentQuestion.answer;
 
         if (correctAnswer === currentChoiceText) {
-
-            let inputs = document.querySelectorAll('.inputRadio');
 
             inputs.forEach(function(input) {
 
