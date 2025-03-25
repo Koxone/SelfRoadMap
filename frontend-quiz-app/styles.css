@@ -425,7 +425,142 @@ legend,
     right: 2%;
 }
 
-/*--------------------------------------------------ERROR STATE-----------------------------*/
+/*--------------------------------------------------Desktop-----------------------------*/
+@media (min-width: 1024px) {
+
+    .generalContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 85px 140px 172px 140px;
+    }
+
+    .landingPage {
+        display: flex;
+        width: 1160px;
+        height: 456px;
+    }
+
+    .landingTextContainer {
+        display: flex;
+        align-items: flex-start;
+        width: 100%;
+        height: 100%;
+    }
+
+    .titleContainer .lgText {
+        font-size: 64px;
+    }
+
+    .titleContainer .smText {
+        font-size: 20px;
+    }
+
+    .menuContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .optionContainer {
+        height: 96px;
+    }
+
+    .headerContainer {
+        padding: 83px  140px;
+        height: 224px;
+    }
+
+    .quizIcon {
+        width: 56px;
+        height: 56px;
+    }
+
+    .questionTitleText {
+        font-size: 28px;
+    }
+
+    .mainQuestionContainer {
+        display: grid;
+        gap: 131px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, auto);
+        width: 1160px;
+        height: 564px;
+    }
+
+    .questionTextContainer {
+        width: 100%;
+        height: 100%;
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+
+    .answersContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 564px;
+        height: 564px;
+        grid-column: 2 / 3;
+        grid-row: 1 / 3;
+    }
+
+    .answerLabel {
+        width: 564px;
+        height: 92px;
+        border-radius: 24px;
+    }
+
+    .mainButton {
+        border-radius: 24px;
+        height: 92px;
+    }
+
+    .progressContainer {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
+
+    .questionText2 {
+        font-size: 28px;
+    }
+
+    .questionText {
+        font-size: 32px;
+    }
+
+    .questionTextContainer .smText {
+        font-size: 20px;
+    }
+
+    .letterContainer {
+        width: 56px;
+        height: 56px;
+    }
+
+    .progressBar {
+        height: 16px;
+    }
+
+    .scoreContainer {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 1157px;
+        height: 512px;
+    }
+
+    .scoreTopicContainer {
+        width: 564px;
+        height: 388px;
+    }
+
+    .lgText {
+        font-size: 64px;
+    }
+}
 
 
 
