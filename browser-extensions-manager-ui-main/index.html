@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <title>Browser extensions manager UI</title>
+</head>
+<body>
+
+  <main class="mainContainer">
+    <header class="headerContainer">
+      <div class="logoContainer">
+        <img class="logo" src="assets/images/logo.svg" alt="">
+      </div>
+      <div class="darkModeContainer">
+        <img class="darkMode" src="assets/images/icon-sun.svg" alt="">
+      </div>
+    </header>
+    <div class="generalContainer">
+      <div class="optionsContainer">
+        <h1 class="lgText">
+          Extensions List
+        </h1>
+        <div class="optionsInnerContainer">
+          <input name="filter" type="radio" class="radio" id="all" checked>
+          <label for="all" class="options active">
+            All
+          </label>
+          <input name="filter" type="radio" class="radio" id="active">
+          <label for="active" class="options">
+            Active
+          </label>
+          <input name="filter" type="radio" class="radio" id="inactive">
+          <label for="inactive" class="options">
+            Inactive
+          </label>
+        </div>
+      </div>
+      <div class="cardsContainer">
+        <div class="card" id="cardDevLens">
+          <div class="topContainer">
+            <img src="assets/images/logo-devlens.svg" alt="">
+            <div class="cardTextContainer">
+              <strong>
+                DevLens
+              </strong>
+              <p class="smText">
+                Quickly inspect page layouts and visualize element boundaries.
+              </p>
+            </div>
+          </div>
+          <div class="bottomContainer">
+            <button class="cardRemoveButton">
+              Remove
+            </button>
+            <div class="toggleContainer">
+              <input type="checkbox" class="checkbox" name="toggle" id="toggleDevLens">
+              <label for="toggleDevLens" class="slider"></label>
+            </div>
+          </div>
+        </div>
+        <div class="card" id="cardStyleSpy">
+          <div class="topContainer">
+            <img src="assets/images/logo-style-spy.svg" alt="">
+            <div class="cardTextContainer">
+              <strong>
+                StyleSpy
+              </strong>
+              <p class="smText">
+                Instantly analyze and copy CSS from any webpage element.
+              </p>
+            </div>
+          </div>
+          <div class="bottomContainer">
+            <button class="cardRemoveButton">
+              Remove
+            </button>
+            <div class="toggleContainer">
+              <input type="checkbox" class="checkbox" name="toggle" id="toggleStyleSpy">
+              <label for="toggleStyleSpy" class="slider"></label>
+            </div>
+          </div>
+        </div>
+        <div class="card" id="cardSpeedBoost">
+          <div class="topContainer">
+            <img src="assets/images/logo-speed-boost.svg" alt="">
+            <div class="cardTextContainer">
+              <strong>
+                SpeedBoost
+              </strong>
+              <p class="smText">
+                Optimizes browser resource usage to accelerate page loading.
+              </p>
+            </div>
+          </div>
+          <div class="bottomContainer">
+            <button class="cardRemoveButton">
+              Remove
+            </button>
+            <div class="toggleContainer">
+              <input type="checkbox" class="checkbox" name="toggle" id="toggleSpeedBoost">
+              <label for="toggleSpeedBoost" class="slider"></label>
+            </div>
+          </div>
+        </div>
+        <div class="card" id="cardJSONWizard">
+          <div class="topContainer">
+            <img src="assets/images/logo-json-wizard.svg" alt="">
+            <div class="cardTextContainer">
+              <strong>
+                JSONWizard
+              </strong>
+              <p class="smText">
+                Formats, validates, and prettifies JSON responses in-browser.
+              </p>
+            </div>
+          </div>
+          <div class="bottomContainer">
+            <button class="cardRemoveButton">
+              Remove
+            </button>
+            <div class="toggleContainer">
+              <input type="checkbox" class="checkbox" name="toggle" id="toggleJSONWizard">
+              <label for="toggleJSONWizard" class="slider"></label>
+            </div>
+          </div>
+        </div>
+        <div class="card" id="cardTabMasterPro">
+          <div class="topContainer">
+            <img src="assets/images/logo-tab-master-pro.svg" alt="">
+            <div class="cardTextContainer">
+              <strong>
+                TabMaster Pro
+              </strong>
+              <p class="smText">
+                Organizes browser tabs into groups and sessions.
+              </p>
+            </div>
+          </div>
+          <div class="bottomContainer">
+            <button class="cardRemoveButton">
+              Remove
+            </button>
+            <div class="toggleContainer">
+              <input type="checkbox" class="checkbox" name="toggle" id="toggleTabMasterPro">
+              <label for="toggleTabMasterPro" class="slider"></label>
+            </div>
+          </div>
+        </div>
+        <div class="card" id="cardViewportBuddy">
+          <div class="topContainer">
+            <img src="assets/images/logo-viewport-buddy.svg" alt="">
+            <div class="cardTextContainer">
+              <strong>
+                ViewportBuddy
+              </strong>
+              <p class="smText">
+                Simulates various screen resolutions directly within the browser.
+              </p>
+            </div>
+          </div>
+          <div class="bottomContainer">
+            <button class="cardRemoveButton">
+              Remove
+            </button>
+            <div class="toggleContainer">
+              <input type="checkbox" class="checkbox" name="toggle" id="toggleViewportBuddy">
+              <label for="toggleViewportBuddy" class="slider"></label>
+            </div>
+          </div>
+        </div>
+        <div class="card" id="cardMarkupNotes">
+          <div class="topContainer">
+            <img src="assets/images/logo-markup-notes.svg" alt="">
+            <div class="cardTextContainer">
+              <strong>
+                Markup Notes
+              </strong>
+              <p class="smText">
+                Enables annotation and notes directly onto webpages for collaborative debugging.
+              </p>
+            </div>
+          </div>
+          <div class="bottomContainer">
+            <button class="cardRemoveButton">
+              Remove
+            </button>
+            <div class="toggleContainer">
+              <input type="checkbox" class="checkbox" name="toggle" id="toggleMarkupNotes">
+              <label for="toggleMarkupNotes" class="slider"></label>
+            </div>
+          </div>
+        </div>
+        <div class="card" id="cardGridGuides">
+          <div class="topContainer">
+            <img src="assets/images/logo-grid-guides.svg" alt="">
+            <div class="cardTextContainer">
+              <strong>
+                GridGuides
+              </strong>
+              <p class="smText">
+                Overlay customizable grids and alignment guides on any webpage.
+              </p>
+            </div>
+          </div>
+          <div class="bottomContainer">
+            <button class="cardRemoveButton">
+              Remove
+            </button>
+            <div class="toggleContainer">
+              <input type="checkbox" class="checkbox" name="toggle" id="toggleGridGuides">
+              <label for="toggleGridGuides" class="slider"></label>
+            </div>
+          </div>
+        </div>
+        <div class="card" id="cardPalettePicker">
+          <div class="topContainer">
+            <img src="assets/images/logo-palette-picker.svg" alt="">
+            <div class="cardTextContainer">
+              <strong>
+                Palette Picker
+              </strong>
+              <p class="smText">
+                Instantly extracts color palettes from any webpage.
+              </p>
+            </div>
+          </div>
+          <div class="bottomContainer">
+            <button class="cardRemoveButton">
+              Remove
+            </button>
+            <div class="toggleContainer">
+              <input type="checkbox" class="checkbox" name="toggle" id="togglePalettePicker">
+              <label for="togglePalettePicker" class="slider"></label>
+            </div>
+          </div>
+        </div>
+        <div class="card" id="cardLinkChecker">
+          <div class="topContainer">
+            <img src="assets/images/logo-link-checker.svg" alt="">
+            <div class="cardTextContainer">
+              <strong>
+                LinkChecker
+              </strong>
+              <p class="smText">
+                Scans and highlights broken links on any page.
+              </p>
+            </div>
+          </div>
+          <div class="bottomContainer">
+            <button class="cardRemoveButton">
+              Remove
+            </button>
+            <div class="toggleContainer">
+              <input type="checkbox" class="checkbox" name="toggle" id="toggleLinkChecker">
+              <label for="toggleLinkChecker" class="slider"></label>
+            </div>
+          </div>
+        </div>
+        <div class="card" id="cardDOMSnapshot">
+          <div class="topContainer">
+            <img src="assets/images/logo-dom-snapshot.svg" alt="">
+            <div class="cardTextContainer">
+              <strong>
+                DOM Snapshot
+              </strong>
+              <p class="smText">
+                Capture and export DOM structures quickly.
+              </p>
+            </div>
+          </div>
+          <div class="bottomContainer">
+            <button class="cardRemoveButton">
+              Remove
+            </button>
+            <div class="toggleContainer">
+              <input type="checkbox" class="checkbox" name="toggle" id="toggleDOMSnapshot">
+              <label for="toggleDOMSnapshot" class="slider"></label>
+            </div>
+          </div>
+        </div>
+        <div class="card" id="cardConsolePlus">
+          <div class="topContainer">
+            <img src="assets/images/logo-console-plus.svg" alt="">
+            <div class="cardTextContainer">
+              <strong>
+                ConsolePlus
+              </strong>
+              <p class="smText">
+                Enhanced developer console with advanced filtering and logging.
+              </p>
+            </div>
+          </div>
+          <div class="bottomContainer">
+            <button class="cardRemoveButton">
+              Remove
+            </button>
+            <div class="toggleContainer">
+              <input type="checkbox" class="checkbox" name="toggle" id="toggleConsolePlus">
+              <label for="toggleConsolePlus" class="slider"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+<script src="styles.js"></script>
+</body>
+</html>

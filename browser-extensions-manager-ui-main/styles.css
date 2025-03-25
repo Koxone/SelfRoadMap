@@ -1,0 +1,266 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Noto Sans';
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    background-repeat: no-repeat;
+    background: linear-gradient(180deg, #04091B 0%, #091540 100%);
+    background-size: cover;
+}
+
+:root {
+    /* Neutrales */
+    --neutral-900: hsl(227, 75%, 14%);
+    --neutral-800: hsl(226, 25%, 17%);
+    --neutral-700: hsl(225, 23%, 24%);
+    --neutral-600: hsl(226, 11%, 37%);
+    --neutral-300: hsl(0, 0%, 78%);
+    --neutral-200: hsl(217, 61%, 90%);
+    --neutral-100: hsl(0, 0%, 93%);
+    --neutral-0:   hsl(200, 60%, 99%);
+  
+    /* Rojos */
+    --red-400: hsl(3, 86%, 64%);
+    --red-500: hsl(3, 71%, 56%);
+    --red-700: hsl(3, 77%, 44%);
+  
+    /* Gradientes */
+    --gradient-light: linear-gradient(180deg, #EBF2FC 0%, #EEF8F9 100%);
+    --gradient-dark:  linear-gradient(180deg, #040918 0%, #091540 100%);
+}
+  
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+}
+
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    background-color: var(--neutral-600);
+    padding: 0.7813rem;
+    border-radius: 0.75rem;
+    margin-bottom: 2.5rem;
+}
+
+.darkModeContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    background-color: var(--neutral-700);
+    width: 3.125rem;
+    height: 3.125rem;
+    cursor: pointer;
+}
+
+.generalContainer  {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+
+.optionsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.lgText {
+    white-space: nowrap;
+    color: white;
+}
+
+.optionsInnerContainer {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.radio {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.options {
+    display: flex;
+    width: auto;
+    height: 2.875rem;
+    justify-content: center;
+    align-items: center;
+    height: 2.875rem;
+    border-radius: 62.4375rem;
+    padding: 1.25rem;
+    background-color: var(--neutral-700);
+    color: white;
+    cursor: pointer;
+}
+
+.options:hover {
+    background-color: var(--neutral-600);
+}
+
+.options.active {
+    background-color: #F26A63;
+}
+
+.midText {
+    font-size: 1.25rem;
+}
+
+.cardsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 12.5rem;
+    border-radius: 1.25rem;
+    padding: 1.25rem;
+    background-color: var(--neutral-800);
+}
+
+.topContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    gap: 1rem;
+}
+
+.topContainer img {
+    align-self: flex-start;
+}
+
+.smText {
+    color: var(--neutral-300);
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+strong {
+    font-size: 1.25rem;
+    line-height: 150%;
+}
+
+strong, .smText {
+    color: white;
+}
+
+.bottomContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.cardRemoveButton {
+    width: 5.6875rem;
+    height: 2.375rem;
+    border: 0.0625rem solid var(--neutral-600);
+    border-radius: 62.4375rem;
+    background: none;
+    color: white;
+    cursor: pointer;
+}
+
+.cardRemoveButton:hover {
+    border: 0.0625rem solid var(--red-400);
+    background-color: var(--red-400);
+}
+
+.toggleContainer {
+    position: relative;
+    width: 2.25rem;
+    height: 1.25rem;
+}
+
+.toggleContainer input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 1.25rem;
+    background-color: var(--neutral-600);
+}
+
+.slider::before {
+    position: absolute;
+    content: "";
+    height: 0.875rem;
+    width: 0.875rem;
+    left: 0.1875rem;
+    bottom: 0.1875rem;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+.toggleContainer input:checked ~ .slider {
+    background-color: var(--red-400);
+}
+
+.toggleContainer input:checked ~ .slider::before {
+    transform: translateX(0.75rem);
+}
+
+/*---------------------------------------------------Tablet------------------------------------------------------*/
+
+@media (min-width: 48rem) and (max-width:63.9375rem) {
+    .optionsContainer {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .cardsContainer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/*--------------------------------------------------DESKTOP---------------------------------------------------------*/
+@media (min-width: 64rem) {
+    .optionsContainer {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .cardsContainer {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
