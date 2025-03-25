@@ -254,6 +254,11 @@ strong, .smText {
 
 /*--------------------------------------------------DESKTOP---------------------------------------------------------*/
 @media (min-width: 64rem) {
+
+    .mainContainer {
+        padding: 40px 135px 64px 135px;
+    }
+    
     .optionsContainer {
         flex-direction: row;
         justify-content: space-between;
