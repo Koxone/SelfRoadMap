@@ -6,11 +6,13 @@ let jsonData = []
 //Quick Test Section
 
 // Function to load JSON only once if not in localStorage
-function loadJsonData() {
+function loadJsonData(callBack) {
   const storedJson = localStorage.getItem('jsonData')
+
   if (storedJson) {
     jsonData = JSON.parse(storedJson)
     console.log('✅ JSON cargado desde localStorage')
+    if (callBack) callBack()
   } else {
     fetch('data.json')
       .then(function (response) {
@@ -20,13 +22,19 @@ function loadJsonData() {
         jsonData = data
         localStorage.setItem('jsonData', JSON.stringify(data))
         console.log('✅ JSON cargado desde archivo y guardado en localStorage')
+        if (callBack) callBack()
       })
       .catch(function (error) {
         console.error('Error al cargar JSON:', error)
       })
   }
 }
-loadJsonData()
+loadJsonData(function () {
+  updateUi()
+  filterMenu()
+  toggleBookmark()
+  saveToJson()
+})
 
 //Function to get data from JSON
 function getJsonData() {
@@ -77,8 +85,8 @@ function updateUi() {
     if (bookmark) {
       const iconPath =
         data.isBookmarked === true
-          ? '/assets/icon-bookmark-full.svg'
-          : '/assets/icon-bookmark-empty.svg'
+          ? './assets/icon-bookmark-full.svg'
+          : './assets/icon-bookmark-empty.svg'
       bookmark.setAttribute('src', iconPath)
       bookmark.setAttribute('alt', data.isBookmarked)
     }
@@ -92,8 +100,8 @@ function updateUi() {
     if (tCardCategoryIcon) {
       const isMovie = data.category === 'Movie'
       const iconPath = isMovie
-        ? '/assets/icon-nav-movies.svg'
-        : '/assets/icon-nav-tv-series.svg'
+        ? './assets/icon-nav-movies.svg'
+        : './assets/icon-nav-tv-series.svg'
       tCardCategoryIcon.setAttribute('src', iconPath)
       tCardCategoryIcon.setAttribute('alt', data.category)
     }
@@ -127,8 +135,8 @@ function updateUi() {
     const isBookmarked = data.isBookmarked === true
     if (bookmark) {
       const iconPath = isBookmarked
-        ? '/assets/icon-bookmark-full.svg'
-        : '/assets/icon-bookmark-empty.svg'
+        ? './assets/icon-bookmark-full.svg'
+        : './assets/icon-bookmark-empty.svg'
       bookmark.setAttribute('src', iconPath)
       bookmark.setAttribute('alt', data.isBookmarked)
       card.classList.remove('booked', 'notBooked')
@@ -144,8 +152,8 @@ function updateUi() {
     const isMovie = data.category === 'Movie'
     if (cardCategoryIcon) {
       const iconPath = isMovie
-        ? '/assets/icon-nav-movies.svg'
-        : '/assets/icon-nav-tv-series.svg'
+        ? './assets/icon-nav-movies.svg'
+        : './assets/icon-nav-tv-series.svg'
       cardCategoryIcon.setAttribute('src', iconPath)
       cardCategoryIcon.setAttribute('alt', data.category)
       card.classList.remove('movie', 'tv')
@@ -165,7 +173,6 @@ function updateUi() {
     cardRate.textContent = data.rating
   })
 }
-updateUi()
 
 //Function to handle filters
 function filterMenu() {
@@ -206,25 +213,94 @@ function filterMenu() {
     })
   })
 }
-filterMenu()
 
+//Function for bookmarking
+function toggleBookmark() {
+  document.addEventListener('click', (event) => {
+    const full = 'assets/icon-bookmark-full.svg'
+    const empty = 'assets/icon-bookmark-empty.svg'
+    const target = event.target;
 
-// filterMenu()(() => {
-//   const f = {
-//     tv: (c) => c.classList.contains('tv'),
-//     movie: (c) => c.classList.contains('movie'),
-//     home: () => true,
-//     bookmarked: (c) => c.classList.contains('booked'),
-//   }
-//   document
-//     .querySelectorAll('.menuButton')
-//     .forEach((b) =>
-//       b.addEventListener('click', () =>
-//         document
-//           .querySelectorAll('.movie, .tv')
-//           .forEach(
-//             (c) => (c.style.display = (f[b.id] || f.home)(c) ? 'flex' : 'none')
-//           )
-//       )
-//     )
-// })()
+    if (target.classList.contains('cardBookmark') 
+      || target.classList.contains('bookmarkTcard')) {
+      if (target.classList.contains('notBooked')) {
+        target.classList.remove('notBooked');
+        target.classList.add('booked');
+        target.setAttribute('src', full);
+      } else {
+        target.classList.remove('booked');
+        target.classList.add('notBooked');
+        target.setAttribute('src', empty);
+      }
+    }
+  })
+}
+
+//Function to save state in Json
+function saveToJson() {
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+    const card = target.closest('.card');
+    const title = card.querySelector('.cardTitle').textContent.toLowerCase();
+
+    const item = jsonData.find(function(obj) {
+      return obj.title.toLowerCase() === title;
+    })
+
+    if (item) {
+      if (target.classList.contains('booked')) {
+          item.isBookmarked = true
+          localStorage.setItem('jsonData', JSON.stringify(jsonData))
+          updateUi()
+      } else if (target.classList.contains('notBooked')) {
+        item.isBookmarked = false
+        localStorage.setItem('jsonData', JSON.stringify(jsonData))
+        updateUi()
+      }
+    }
+  })
+}
+saveToJson()
+
+//Function to render filtered results
+function renderFilteredResults(filtered) {
+  const allCards = document.querySelectorAll('.card, .tCard');
+  allCards.forEach(card => card.style.display = 'none')
+
+  filtered.forEach(item => {
+    const matchingCard = [...allCards].find(card => {
+    const cardTitle = card.querySelector('.cardTitle') || card.querySelector('.tCardTitle')
+    return cardTitle && cardTitle.textContent.toLowerCase() === item.title.toLowerCase()
+    })
+
+    if (matchingCard) {
+      matchingCard.style.display = 'flex'
+    }
+  })
+}
+
+//Function for Search Bar
+function searchBarHandler() {
+  const searchBar = document.getElementById('searchBarLanding');
+
+  searchBar.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+    }
+  })
+
+  searchBar.addEventListener('input', () => {
+    const value = searchBar.value.trim().toLowerCase();
+
+    if (value === '') {
+      updateUi()
+      return;
+    }
+
+    const filteredResults = jsonData.filter(function(item) {
+      return item.title.toLowerCase().includes(value);
+    })
+    renderFilteredResults(filteredResults)
+  })
+}
+searchBarHandler()
