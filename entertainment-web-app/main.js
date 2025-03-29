@@ -5,6 +5,15 @@ let jsonData = []
 
 //Quick Test Section
 
+//Function Go Home
+function goHome() {
+  const homeButton = document.getElementById('home');
+  homeButton.addEventListener('click', () => {
+    window.location.href = '/'
+  })
+}
+goHome()
+
 // Function to load JSON only once if not in localStorage
 function loadJsonData(callBack) {
   const storedJson = localStorage.getItem('jsonData')
@@ -304,3 +313,5 @@ function searchBarHandler() {
   })
 }
 searchBarHandler()
+
+
