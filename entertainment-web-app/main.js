@@ -85,8 +85,8 @@ function updateUi() {
     if (bookmark) {
       const iconPath =
         data.isBookmarked === true
-          ? './assets/icon-bookmark-full.svg'
-          : './assets/icon-bookmark-empty.svg'
+          ? '/assets/icon-bookmark-full.svg'
+          : '/assets/icon-bookmark-empty.svg'
       bookmark.setAttribute('src', iconPath)
       bookmark.setAttribute('alt', data.isBookmarked)
     }
@@ -100,8 +100,8 @@ function updateUi() {
     if (tCardCategoryIcon) {
       const isMovie = data.category === 'Movie'
       const iconPath = isMovie
-        ? './assets/icon-nav-movies.svg'
-        : './assets/icon-nav-tv-series.svg'
+        ? '/assets/icon-nav-movies.svg'
+        : '/assets/icon-nav-tv-series.svg'
       tCardCategoryIcon.setAttribute('src', iconPath)
       tCardCategoryIcon.setAttribute('alt', data.category)
     }
@@ -135,8 +135,8 @@ function updateUi() {
     const isBookmarked = data.isBookmarked === true
     if (bookmark) {
       const iconPath = isBookmarked
-        ? './assets/icon-bookmark-full.svg'
-        : './assets/icon-bookmark-empty.svg'
+        ? '/assets/icon-bookmark-full.svg'
+        : '/assets/icon-bookmark-empty.svg'
       bookmark.setAttribute('src', iconPath)
       bookmark.setAttribute('alt', data.isBookmarked)
       card.classList.remove('booked', 'notBooked')
@@ -152,8 +152,8 @@ function updateUi() {
     const isMovie = data.category === 'Movie'
     if (cardCategoryIcon) {
       const iconPath = isMovie
-        ? './assets/icon-nav-movies.svg'
-        : './assets/icon-nav-tv-series.svg'
+        ? '/assets/icon-nav-movies.svg'
+        : '/assets/icon-nav-tv-series.svg'
       cardCategoryIcon.setAttribute('src', iconPath)
       cardCategoryIcon.setAttribute('alt', data.category)
       card.classList.remove('movie', 'tv')
