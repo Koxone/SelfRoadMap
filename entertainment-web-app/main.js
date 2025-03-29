@@ -7,7 +7,7 @@ let jsonData = []
 
 //Function Go Home
 function goHome() {
-  const homeButton = document.getElementById('home');
+  const homeButton = document.getElementById('homeButton');
   homeButton.addEventListener('click', () => {
     window.location.href = '/'
   })
