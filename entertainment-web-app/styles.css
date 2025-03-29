@@ -1,0 +1,509 @@
+* {
+    font-family: 'Outfit';
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+}
+
+:root {
+    --color-red: #FC4747;           /* Rojo Principal */
+    --color-dark-blue: #10141E;     /* Azul Oscuro */
+    --color-light-blue: #5A698F;    /* Azul Claro */
+    --color-white: #FFFFFF;         /* Blanco */
+    --color-dark: #161D2F;          /* Azul Suave */
+}
+
+:root {
+    --font-size-heading-l: 2rem;  /* Heading L */
+    --font-size-heading-m: 1.5rem;  /* Heading M */
+    --font-size-heading-s: 1.5rem;  /* Heading S */
+    --font-size-heading-xs: 1.125rem; /* Heading XS */
+    --font-size-body-s: 0.9375rem;     /* Body S */
+    --font-size-body-m: 0.9375rem;     /* Body M */
+}
+
+p, h2 {
+    color: white;
+}
+
+body {
+    background-color: #10141E;
+}
+
+.hover {
+    display: none;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.generalContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem 1rem;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 3.5rem;
+    padding: 1.125rem 1rem;
+    background-color: #161D2F;
+}
+
+.logoContainer {
+    cursor: pointer;
+}
+
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 1.25rem;
+}
+
+.menuContainer {
+    display: flex;
+    width: 8.3462rem;
+    height: auto;
+    justify-content: space-between;
+}
+
+.menuContainer svg path {
+    cursor: pointer;
+    fill: #5A698F;
+}
+
+.menuContainer svg path:hover {
+    fill: var(--color-red);
+}
+
+.avatarContainer {
+    display: flex;
+    width: 1.25rem;
+    height: 1.25rem;
+    outline: 0.0625rem solid white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/*--------------------------------------------------------Search Bar----------------------------------------------------------*/
+
+.searchBarContainer {
+    display: flex;
+    align-items: center;
+    width: 16.875rem;
+    height: 1.5rem;
+    align-self: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+form img {
+    margin-right: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+form input {
+    display: flex;
+    all: unset;
+    width: 100%;
+    color: white;
+}
+
+form input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/*--------------------------------------------------------Trending----------------------------------------------------------*/
+
+.trendingContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.titleContainer {
+    display: flex;
+    font-size: 1.25rem;
+    letter-spacing: -0.0194rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+}
+
+.trendingImagesContainer {
+    display: flex;
+    width: 100%;
+    height: auto;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    flex-wrap: nowrap;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.tCard {
+    position: relative;
+    width: 15rem;
+    height: 8.75rem;
+    border-radius: 0.5rem;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+}
+
+.tCardImage img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+}
+
+.tBookmarkContainer {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: #979797;
+    top: 7%;
+    right: 5%;
+    cursor: pointer;
+}
+
+.bookmarkActive {
+    display: none;
+}
+
+.tBookmarkContainer .bookmarkInactive {
+    width: 0.7294rem;
+    height: 0.875rem;
+}
+
+.tCardTextContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 8.25rem;
+    height: 2.375rem;
+    bottom: 1rem;
+    left: 1rem;
+}
+
+.topContainer {
+    display: flex;
+    align-items: center;
+}
+
+.topContainer img {
+    width: 0.625rem;
+    margin-right: 0.375rem;
+}
+
+.spacer {
+    width: 0.1875rem;
+    height: 0.1875rem;
+    background-color: #979797;
+    border-radius: 50%;
+    margin-left: 0.5rem;
+    margin-right: 0.375rem;
+}
+
+.smText {
+    white-space: nowrap;
+    font-size: 0.75rem;
+    font-weight: 300;
+}
+
+.tBottomContainer {
+    width: 5.6875rem;
+    height: 1.1875rem;
+}
+
+.midText {
+    display: inline;
+    white-space: nowrap;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: white;
+}
+
+/*--------------------------------------------------------Recommended----------------------------------------------------------*/
+
+.recommendedForYouContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+h2 {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+.recommendedTitleContainer {
+    margin-bottom: 1.5rem;
+}
+
+.recommendedCardsContainer {
+    display: flex;
+    gap: 0.9375rem;
+}
+
+.cardsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 0.9375rem;
+    flex-wrap: wrap;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 10.25rem;
+    height: 9.625rem;
+    border-radius: 0.5rem;
+}
+
+.cardContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.cardImage {
+    width: 10.25rem;
+    height: 6.875rem;
+}
+
+.cardImage img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+}
+
+.cardTextContainer {
+    position: absolute;
+    bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.bookmarkContainer {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: #979797;
+    top: 0.5rem;
+    right: 0.5rem;
+    cursor: pointer;
+}
+
+.bookmarkActive {
+    display: none;
+}
+
+.bookmarkContainer .bookmarkInactive {
+    width: 0.7294rem;
+    height: 0.875rem;
+}
+
+.cardTextContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 8.25rem;
+    height: 2.375rem;
+    bottom: 0rem;
+    left: 0rem;
+}
+
+.rateText {
+    font-size: 0.6875rem;
+    font-weight: 300;
+}
+
+/*--------------------------------------------------------Tablet----------------------------------------------------------*/
+
+@media (min-width: 48rem) {
+    .trendingContainer {
+        height: 18.4375rem;
+    }
+
+    .tCard {
+        width: 29.375rem;
+        height: auto;
+    }
+
+    .tCardImage img {
+        height: 14.375rem;
+    }
+
+    .trendingImagesContainer {
+        gap: 2.5rem;
+    }
+
+    .card {
+        width: 13.75rem;
+        height: 12rem;
+    }
+
+    .cardImage {
+        width: 13.75rem;
+        height: 8.75rem;
+    }
+
+    .midText {
+        font-size: 1.125rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .cardsContainer {
+        justify-content: center;
+    }
+}
+
+/*--------------------------------------------------------Desktop----------------------------------------------------------*/
+
+@media (min-width: 64rem) {
+
+    .mainContainer {
+        position: relative;
+        padding: 0 0 0 10.25rem;
+    }
+
+    .generalContainer {
+        padding-right: 1.25rem;
+    }
+
+    .headerContainer {
+        flex-direction: column;
+        height: 100%;
+        justify-content: unset;
+    }
+
+    .menuContainer {
+        flex-direction: column;
+        width: 1.25rem;
+        height: 12.5rem;
+        margin-bottom: 34.5rem;
+    }
+
+    .avatarContainer {
+        align-items: center;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .avatarContainer img {
+        width: 100%;
+    }
+
+    .menuContainer img {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+
+    .logoContainer, 
+    .logoContainer img {
+        width: 2rem;
+        height: 1.625rem;
+        margin-bottom: 4.6875rem;
+    }
+
+    header {
+        display: flex;
+        align-items: flex-start;
+        width: 6rem;
+        height: 60rem;
+        border-radius: 1.25rem;
+        top: 2rem;
+        left: 2rem;
+        position:absolute;
+        padding: 2.1875rem 1.75rem 2rem 1.75rem;
+        border: 0.0625rem solid white;
+    }
+
+    .trendingContainer {
+        height: 18.4375rem;
+    }
+
+    .tCard {
+        width: 29.375rem;
+        height: auto;
+    }
+
+    .tCardImage img {
+        height: 14.375rem;
+    }
+
+    .trendingImagesContainer {
+        gap: 2.5rem;
+    }
+
+    .card {
+        width: 17.5rem;
+        height: 14.125rem;
+    }
+
+    .cardImage {
+        width: 17.5rem;
+        height: 10.875rem;
+    }
+
+    .midText {
+        font-size: 1.125rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .cardsContainer {
+        justify-content: center;
+        width: 100%;
+        gap: 2.5rem;
+    }
+
+    .midText {
+        font-size: 1.125rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .cardsContainer {
+        justify-content: center;
+    }
+}
