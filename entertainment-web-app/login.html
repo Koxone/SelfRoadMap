@@ -1,23 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Entertainment web app</title>
-</head>
+    <title>Login</title>
+  </head>
 <body>
-
-  Login
-
-  Email address
-  Password
-
-  Login to your account
-
-  Don't have an account? Sign Up
-  
+  <main class="signMainContainer">
+    <div class="signHeaderContainer">
+      <img src="assets/logo.svg" alt="">
+    </div>
+    <div class="signGeneralContainer">
+      <h1 class="lgText">
+        Login
+      </h1>
+      <div class="signFormContainer">
+        <fieldset>
+          <legend>
+            <!--Hide in CSS-->
+          </legend>
+          <label for="email"></label>
+          <input class="logInput" type="text" id="loginEmail" placeholder="Email Address">
+          <div class="spacer"></div>
+          <label for="password"></label>
+          <input class="logInput" type="password" id="loginPassword" placeholder="Password">
+          <div class="spacer"></div>
+        </fieldset>
+      </div>
+      <div class="buttonContainer">
+        <button class="mainButton" id="loginButton">
+          Login to your account
+        </button>
+      </div>
+      <div class="alreadyContainer">
+        <strong>
+          Don't have an account?
+        </strong>
+        <a href="sign-up.html">
+          Sign Up
+        </a>
+      </div>
+    </div>
+  </main>
+  <script src="main.js"></script>
 </body>
 </html>

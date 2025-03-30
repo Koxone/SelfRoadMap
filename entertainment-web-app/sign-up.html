@@ -1,24 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Entertainment web app</title>
-</head>
+    <title>Sign Up</title>
+  </head>
 <body>
-
-  Sign Up
-
-  Email address
-  Password
-  Repeat password
-
-  Create an account
-
-  Already have an account? Login
-  
+  <main class="signMainContainer">
+    <div class="signHeaderContainer">
+      <img src="assets/logo.svg" alt="">
+    </div>
+    <div class="signGeneralContainer">
+      <h1 class="lgText">
+        Sign Up
+      </h1>
+      <div class="signFormContainer">
+        <fieldset>
+          <legend>
+            <!--Hide in CSS-->
+          </legend>
+          <label for="email"></label>
+          <input class="signInput" type="text" id="email" placeholder="Email Address">
+          <div class="spacer"></div>
+          <label for="password"></label>
+          <input class="signInput" type="password" id="password" placeholder="Password">
+          <div class="spacer"></div>
+          <label for="repeatPassword"></label>
+          <input class="signInput" type="password" id="repeatPassword" placeholder="Repeat Password">
+          <div class="spacer"></div>
+        </fieldset>
+      </div>
+      <div class="buttonContainer">
+        <button class="mainButton">
+          Create an Account
+        </button>
+      </div>
+      <div class="alreadyContainer">
+        <strong>
+          Already have an account? 
+        </strong>
+        <a href="login.html">
+          Login
+        </a>
+      </div>
+    </div>
+  </main>
+  <script src="sign.js"></script>
 </body>
 </html>

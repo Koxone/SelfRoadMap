@@ -14,6 +14,77 @@ function goHome() {
 }
 goHome()
 
+//Function for Login Button
+function loginButton() {
+  const loginButton = document.getElementById('loginButton');
+  const goToSignUp = document.getElementById('goToSignUp');
+  const signUpScreen = document.getElementById('signUpScreen');
+  const loginScreen = document.getElementById('loginScreen');
+
+  loginButton.addEventListener('click', () => {
+
+    const loginScreen = document.getElementById('loginScreen');
+    const hide = document.querySelectorAll('.generalContainer, .headerContainer');
+    const header = document.querySelector('header');
+    const avatarButton = document.getElementById('avatarButton');
+
+    hide.forEach(screen => {
+      screen.style.display = 'flex'
+    });
+    loginScreen.style.display = 'none'
+    header.style.display = 'block'
+
+    avatarButton.addEventListener('click', () => {
+      hide.forEach(screen => {
+        screen.style.display = 'none'
+      });
+      loginScreen.style.display = 'flex'
+      header.style.display = 'none'
+    })
+  })
+
+  goToSignUp.addEventListener('click', () => {
+    console.log('FUnciona')
+    signUpScreen.style.display = 'flex'
+    loginScreen.style.display = 'none'
+  })
+}
+loginButton()
+
+//Function for create  accountButton
+function createAccountButton() {
+  const createAccountButton = document.getElementById('createAccountButton');
+  const goToLogin = document.getElementById('goToLogin');
+  const loginScreen = document.getElementById('loginScreen');
+  const signUpScreen = document.getElementById('signUpScreen');
+  const show = document.querySelectorAll('.generalContainer, .headerContainer, header, .headerContainer');
+  const avatarButton = document.getElementById('avatarButton');
+  const header = document.querySelector('header');
+
+  createAccountButton.addEventListener('click', () => {
+
+    show.forEach((screen) => {
+      screen.style.display = 'flex'
+    })
+    signUpScreen.style.display = 'none';
+    loginScreen.style.display = 'none';
+  })
+
+  goToLogin.addEventListener('click', () => {
+    signUpScreen.style.display = 'none'
+    loginScreen.style.display = 'flex'
+  })
+
+  avatarButton.addEventListener('click', () => {
+    show.forEach(screen => {
+      screen.style.display = 'none'
+    });
+    loginScreen.style.display = 'flex'
+    header.style.display = 'none'
+  })
+}
+createAccountButton()
+
 // Function to load JSON only once if not in localStorage
 function loadJsonData(callBack) {
   const storedJson = localStorage.getItem('jsonData')
@@ -42,7 +113,6 @@ loadJsonData(function () {
   updateUi()
   filterMenu()
   toggleBookmark()
-  saveToJson()
 })
 
 //Function to get data from JSON
@@ -94,8 +164,8 @@ function updateUi() {
     if (bookmark) {
       const iconPath =
         data.isBookmarked === true
-          ? '/assets/icon-bookmark-full.svg'
-          : '/assets/icon-bookmark-empty.svg'
+          ? './assets/icon-bookmark-full.svg'
+          : './assets/icon-bookmark-empty.svg'
       bookmark.setAttribute('src', iconPath)
       bookmark.setAttribute('alt', data.isBookmarked)
     }
@@ -109,8 +179,8 @@ function updateUi() {
     if (tCardCategoryIcon) {
       const isMovie = data.category === 'Movie'
       const iconPath = isMovie
-        ? '/assets/icon-nav-movies.svg'
-        : '/assets/icon-nav-tv-series.svg'
+        ? './assets/icon-nav-movies.svg'
+        : './assets/icon-nav-tv-series.svg'
       tCardCategoryIcon.setAttribute('src', iconPath)
       tCardCategoryIcon.setAttribute('alt', data.category)
     }
@@ -144,8 +214,8 @@ function updateUi() {
     const isBookmarked = data.isBookmarked === true
     if (bookmark) {
       const iconPath = isBookmarked
-        ? '/assets/icon-bookmark-full.svg'
-        : '/assets/icon-bookmark-empty.svg'
+        ? './assets/icon-bookmark-full.svg'
+        : './assets/icon-bookmark-empty.svg'
       bookmark.setAttribute('src', iconPath)
       bookmark.setAttribute('alt', data.isBookmarked)
       card.classList.remove('booked', 'notBooked')
@@ -161,8 +231,8 @@ function updateUi() {
     const isMovie = data.category === 'Movie'
     if (cardCategoryIcon) {
       const iconPath = isMovie
-        ? '/assets/icon-nav-movies.svg'
-        : '/assets/icon-nav-tv-series.svg'
+        ? './assets/icon-nav-movies.svg'
+        : './assets/icon-nav-tv-series.svg'
       cardCategoryIcon.setAttribute('src', iconPath)
       cardCategoryIcon.setAttribute('alt', data.category)
       card.classList.remove('movie', 'tv')
@@ -269,7 +339,6 @@ function saveToJson() {
     }
   })
 }
-saveToJson()
 
 //Function to render filtered results
 function renderFilteredResults(filtered) {
@@ -298,6 +367,18 @@ function searchBarHandler() {
     }
   })
 
+  searchBar.addEventListener('blur', () => {
+  const allCards = document.querySelectorAll('.card, .tCard');
+
+    if (searchBar.value === '') {
+      searchBar.value = ''
+      allCards.forEach((card) => {
+        card.style.display = 'flex'
+      })
+      updateUi()
+    }
+  })
+
   searchBar.addEventListener('input', () => {
     const value = searchBar.value.trim().toLowerCase();
 
@@ -313,5 +394,4 @@ function searchBarHandler() {
   })
 }
 searchBarHandler()
-
 

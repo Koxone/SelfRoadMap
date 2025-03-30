@@ -44,7 +44,7 @@ body {
 }
 
 .generalContainer {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -68,7 +68,7 @@ header {
 }
 
 .headerContainer {
-    display: flex;
+    display: none;
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -505,4 +505,143 @@ h2 {
     .cardsContainer {
         justify-content: center;
     }
+}
+
+/*--------------------------------------------------------SignUp----------------------------------------------------------*/
+
+header {
+    display: none;
+}
+
+.loginGeneralContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    width: 327px;
+    height: 420px;
+    border-radius: 10px;
+    background-color: #161D2F;
+    padding: 24px 24px 26px 24px;
+}
+
+.signGeneralContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    opacity: 1;
+    flex-direction: column;
+    width: 327px;
+    height: 420px;
+    border-radius: 10px;
+    background-color: #161D2F;
+    padding: 24px 24px 26px 24px;
+}
+
+.loginFormContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    width: 327px;
+    height: 420px;
+    border-radius: 10px;
+    background-color: #161D2F;
+    padding: 24px 24px 26px 24px;
+}
+
+.signHeaderContainer {
+    display: flex;
+    margin-bottom: 58.4px;
+}
+
+h1 {
+    font-size: 32px;
+    color: white;
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+
+.signInput, 
+fieldset {
+    all: unset;
+    color: white;
+}
+
+.signInput {
+    margin-left: -30px;
+}
+
+.signInput::placeholder {
+    text-align: left;
+}
+
+.mainButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 279px;
+    height: 48px;
+    background-color: var(--color-red);
+    border-radius: 8px;
+    border: none;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    margin-bottom: 24px;
+}
+
+.mainButton:hover {
+    background-color: white;
+    border: none;
+    color: black;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 159px;
+    margin-bottom: 40px;
+}
+
+.spacer {
+    display: inline;
+    width: 100%;
+    height: 2px;
+    border: none;
+    background-color: #5A698F;
+}
+
+.alreadyContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    color: white;
+}
+
+#goToLogin, 
+#goToSignUp {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#goToLogin:hover, 
+#goToSignUp:hover {
+    color: white;
+}
+
+.logInput {
+    all: unset;
+    margin-left: -30px;
+    margin-bottom: -6%;
 }
