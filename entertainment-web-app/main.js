@@ -14,76 +14,104 @@ function goHome() {
 }
 goHome()
 
-//Function for Login Button
-function loginButton() {
-  const loginButton = document.getElementById('loginButton');
-  const goToSignUp = document.getElementById('goToSignUp');
-  const signUpScreen = document.getElementById('signUpScreen');
-  const loginScreen = document.getElementById('loginScreen');
+//Function to group variables
+function getDOMElements() {
+  return {
+    loginScreen: document.getElementById('loginGeneralContainer'),
+    signUpScreen: document.getElementById('signGeneralContainer'),
+    mainContainer: document.querySelector('.mainContainer'),
+    elements: document.querySelectorAll('.generalContainer, header'),
+    loginButton: document.getElementById('loginButton'),
+    signUpButton: document.getElementById('createAccountButton'),
+    goToSignUp: document.getElementById('goToSignUp'),
+    goToLogin: document.getElementById('goToLogin'),
+    avatarButton: document.getElementById('avatarButton')
+  };
+}
 
-  loginButton.addEventListener('click', () => {
-
-    const loginScreen = document.getElementById('loginScreen');
-    const hide = document.querySelectorAll('.generalContainer, .headerContainer');
-    const header = document.querySelector('header');
-    const avatarButton = document.getElementById('avatarButton');
-
-    hide.forEach(screen => {
-      screen.style.display = 'flex'
-    });
-    loginScreen.style.display = 'none'
-    header.style.display = 'block'
-
-    avatarButton.addEventListener('click', () => {
-      hide.forEach(screen => {
-        screen.style.display = 'none'
-      });
-      loginScreen.style.display = 'flex'
-      header.style.display = 'none'
-    })
-  })
-
-  goToSignUp.addEventListener('click', () => {
-    console.log('FUnciona')
-    signUpScreen.style.display = 'flex'
-    loginScreen.style.display = 'none'
+//Function to show LoginScreen
+function showLoginScreen(dom) {
+  dom.signUpScreen.style.display = 'none'
+  dom.loginScreen.style.display = 'flex'
+  dom.mainContainer.style.padding = '48px 24px 115px 24px'
+  dom.elements.forEach((element) => {
+    element.style.display = 'none'
   })
 }
-loginButton()
 
-//Function for create  accountButton
-function createAccountButton() {
-  const createAccountButton = document.getElementById('createAccountButton');
-  const goToLogin = document.getElementById('goToLogin');
-  const loginScreen = document.getElementById('loginScreen');
-  const signUpScreen = document.getElementById('signUpScreen');
-  const show = document.querySelectorAll('.generalContainer, .headerContainer, header, .headerContainer');
-  const avatarButton = document.getElementById('avatarButton');
-  const header = document.querySelector('header');
-
-  createAccountButton.addEventListener('click', () => {
-
-    show.forEach((screen) => {
-      screen.style.display = 'flex'
-    })
-    signUpScreen.style.display = 'none';
-    loginScreen.style.display = 'none';
-  })
-
-  goToLogin.addEventListener('click', () => {
-    signUpScreen.style.display = 'none'
-    loginScreen.style.display = 'flex'
-  })
-
-  avatarButton.addEventListener('click', () => {
-    show.forEach(screen => {
-      screen.style.display = 'none'
-    });
-    loginScreen.style.display = 'flex'
-    header.style.display = 'none'
+//Function to show SignUp Screen
+function showSignUpScreen(dom) {
+  dom.signUpScreen.style.display = 'flex'
+  dom.loginScreen.style.display = 'none'
+  dom.mainContainer.style.padding = '48px 24px 115px 24px'
+  dom.elements.forEach((element) => {
+    element.style.display = 'none'
   })
 }
-createAccountButton()
+
+//Function to show Main Screen
+function showMainScreen (dom) {
+  dom.elements.forEach((element) => {
+    element.style.display = 'flex'
+  });
+  dom.loginScreen.style.display = 'none'
+  dom.signUpScreen.style.display = 'none'
+  dom.mainContainer.style.padding = '0px'
+}
+
+//Function to show Main Screen
+function showMainScreen (dom) {
+  dom.elements.forEach((element) => {
+    if (window.innerWidth >= 1024) {
+      element.style.display = 'grid'
+    } else {
+      element.style.display = 'flex'
+    }
+  });
+  dom.loginScreen.style.display = 'none'
+  dom.signUpScreen.style.display = 'none'
+  dom.mainContainer.style.padding = '0px'
+}
+
+//Function to go back to Login Screen
+function goToLoginScreen(dom) {
+  dom.elements.forEach((element) => {
+    element.style.display = 'none'
+  });
+  dom.loginScreen.style.display = 'flex'
+  dom.mainContainer.style.padding = '48px 24px 115px 24px'
+}
+
+//EventListener Handler
+function setupEventListeners(dom) {
+  dom.goToSignUp.addEventListener('click', () => {
+    showSignUpScreen(dom);
+  });
+
+  dom.goToLogin.addEventListener('click', () => {
+    showLoginScreen(dom);
+  });
+
+  dom.loginButton.addEventListener('click', () => {
+    showMainScreen(dom);
+  });
+
+  dom.signUpButton.addEventListener('click', () => {
+    showMainScreen(dom);
+  });
+
+  dom.avatarButton.addEventListener('click', () => {
+    goToLoginScreen(dom);
+  });
+}
+
+//App Initializer
+function initApp() {
+  const dom = getDOMElements();
+  setupEventListeners(dom);
+  showMainScreen(dom);
+}
+initApp()
 
 // Function to load JSON only once if not in localStorage
 function loadJsonData(callBack) {
@@ -112,8 +140,7 @@ function loadJsonData(callBack) {
 loadJsonData(function () {
   updateUi()
   filterMenu()
-  toggleBookmark()
-})
+});
 
 //Function to get data from JSON
 function getJsonData() {
@@ -224,7 +251,7 @@ function updateUi() {
 
     //Year
     let cardYear = card.querySelector('.cardYear')
-    cardYear.textContent = data.year
+    cardYear.textContent = data.year;
 
     //Category Icon
     let cardCategoryIcon = card.querySelector('.cardCategoryIcon')
@@ -260,6 +287,7 @@ function filterMenu() {
 
   menuButtons.forEach((button) => {
     button.addEventListener('click', () => {
+
       if (button.id === 'tv') {
         allCards.forEach((card) => {
           if (card.classList.contains('movie')) {
@@ -299,21 +327,27 @@ function toggleBookmark() {
     const full = 'assets/icon-bookmark-full.svg'
     const empty = 'assets/icon-bookmark-empty.svg'
     const target = event.target;
+    const card = target.closest('.card');
 
     if (target.classList.contains('cardBookmark') 
-      || target.classList.contains('bookmarkTcard')) {
-      if (target.classList.contains('notBooked')) {
-        target.classList.remove('notBooked');
-        target.classList.add('booked');
+      || target.classList.contains('bookmarkTcard')
+      || target.classList.contains('bookmark')) {
+
+      if (card.classList.contains('notBooked')) {
+
+        card.classList.remove('notBooked');
+        card.classList.add('booked');
         target.setAttribute('src', full);
       } else {
-        target.classList.remove('booked');
-        target.classList.add('notBooked');
+        card.classList.remove('booked');
+        card.classList.add('notBooked');
         target.setAttribute('src', empty);
       }
     }
   })
 }
+toggleBookmark()
+
 
 //Function to save state in Json
 function saveToJson() {
